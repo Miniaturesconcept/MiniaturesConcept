@@ -3,27 +3,13 @@ import { Button } from './components/ui/button';
 import { Card, CardContent } from './components/ui/card';
 import './index.css';
 
-const initialFactions = [
-  { name: 'Gondor', description: 'Minas Tirith warriors, heroes, and defenders of the West.', price: '€7.00', image: '/images/gondor.jpg', category: 'Good' },
-  { name: 'Rohan', description: 'Royal Guard, Helm Hammerhand, and valiant cavalry.', price: '€7.00', image: '/images/rohan.jpg', category: 'Good' },
-  { name: 'Dol Guldur', description: 'The Necromancer and twisted spirits of southern Mirkwood.', price: '€7.00', image: '/images/dolguldur.jpg', category: 'Evil' },
-  { name: 'Isengard Scouts', description: 'Lurtz’s scouts and ruthless Uruk-hai vanguard.', price: '€7.00', image: '/images/isengard.jpg', category: 'Evil' },
-  { name: 'Lothlórien', description: 'Galadhrim warriors and elven protectors of the Golden Wood.', price: '€7.00', image: '/images/lothlorien.jpg', category: 'Good' },
-  { name: 'Erebor Reclaimed', description: 'Dwarves of Erebor with Thorin Oakenshield and his company.', price: '€7.00', image: '/images/erebor.jpg', category: 'Good' },
-  { name: 'Iron Hills', description: 'Iron Hills warriors and Dáin Ironfoot’s legions.', price: '€7.00', image: '/images/ironhills.jpg', category: 'Good' },
-  { name: 'Easterlings', description: 'Disciples of Sauron from the East with golden armour.', price: '€7.00', image: '/images/easterlings.jpg', category: 'Evil' },
-  { name: 'Corsairs of Umbar', description: 'Pirates and raiders from the southern coasts of Middle-earth.', price: '€7.00', image: '/images/corsairs.jpg', category: 'Evil' },
-  { name: 'Khazad-dûm', description: 'Dwarves of Moria before its fall, proud and ancient.', price: '€7.00', image: '/images/khazaddum.jpg', category: 'Good' },
-  { name: 'Moria', description: 'Goblins, trolls, and Balrog haunting the depths of Moria.', price: '€7.00', image: '/images/moria.jpg', category: 'Evil' },
-  { name: 'Radagast’s Alliance', description: 'Radagast, Eagles, and creatures of the wild.', price: '€7.00', image: '/images/radagast.jpg', category: 'Good' },
-  { name: 'Treebeard & Ents', description: 'Ents of Fangorn forest led by mighty Treebeard.', price: '€7.00', image: '/images/treebeard.jpg', category: 'Good' }
-];
+import allFactions from './data/factions.json'; // Load all MESBG factions from external file later
 
 const categories = ['All', 'Good', 'Evil'];
 
 export default function MiniaturesConceptHome() {
   const [selected, setSelected] = useState('All');
-  const [factions, setFactions] = useState(initialFactions);
+  const [factions, setFactions] = useState(allFactions);
   const [cart, setCart] = useState([]);
   const [quantities, setQuantities] = useState({});
   const [search, setSearch] = useState('');
@@ -55,7 +41,7 @@ export default function MiniaturesConceptHome() {
   };
 
   useEffect(() => {
-    document.body.style.backgroundImage = "url('/images/lotr-bg.jpg')";
+    document.body.style.backgroundImage = "url('https://i.imgur.com/WcTSPOk.jpg')";
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundAttachment = 'fixed';
     document.body.style.backgroundPosition = 'center';
@@ -68,6 +54,11 @@ export default function MiniaturesConceptHome() {
 
   return (
     <div className="p-6 text-white">
+      <header className="text-center mb-10">
+        <h1 className="text-4xl font-bold">MiniaturesConcept</h1>
+        <p className="text-lg text-gray-300">Premium 3D Resin Miniatures for the Middle-earth Strategy Battle Game</p>
+      </header>
+
       <div className="flex justify-center gap-4 mb-6 flex-wrap">
         {categories.map(cat => (
           <Button
@@ -145,3 +136,4 @@ export default function MiniaturesConceptHome() {
     </div>
   );
 }
+
